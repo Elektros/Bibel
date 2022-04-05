@@ -40,4 +40,8 @@ public class GelesenService {
 
     gelesenRepository.save(gelesen);
   }
+
+  public List<Gelesen> getGelesen() {
+    return gelesenRepository.findAll();
+  }
 }

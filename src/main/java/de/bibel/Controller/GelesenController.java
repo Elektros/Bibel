@@ -1,8 +1,10 @@
 package de.bibel.Controller;
 
 import de.bibel.application.Service.GelesenService;
+import de.bibel.application.model.Gelesen;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 public class GelesenController {
+
   private final GelesenService gelesenService;
+
   @PostMapping("/gelesen")
   public void saveGelesen(
       @RequestParam String bibelabschnitt,
@@ -20,5 +24,10 @@ public class GelesenController {
       @RequestParam String kommentar,
       @RequestParam String leser) {
     gelesenService.saveGelesen(bibelabschnitt, lieblingsverse, versText, labels, leser, kommentar);
+  }
+
+  @GetMapping("/gelesen")
+  public List<Gelesen> getGelesen() {
+    return gelesenService.getGelesen();
   }
 }
