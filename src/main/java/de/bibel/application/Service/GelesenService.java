@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @RequiredArgsConstructor
@@ -43,8 +44,11 @@ public class GelesenService {
     gelesenRepository.save(gelesen);
   }
 
-  public List<Gelesen> getGelesen() {
-    return gelesenRepository.findAll();
+  public List<Gelesen> getGelesen(
+      String bibelabschnitt,
+      String kommentarAusschnitt,
+      String leser) {
+    return gelesenRepository.findGelesen(bibelabschnitt, kommentarAusschnitt, leser);
   }
 
   public void deleteGelesen(UUID id) {
