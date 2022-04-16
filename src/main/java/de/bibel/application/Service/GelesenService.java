@@ -5,6 +5,8 @@ import de.bibel.application.model.GelesenRepository;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +45,10 @@ public class GelesenService {
 
   public List<Gelesen> getGelesen() {
     return gelesenRepository.findAll();
+  }
+
+  public void deleteGelesen(UUID id) {
+    Optional<Gelesen> gelesen = gelesenRepository.findById(id);
+    gelesen.ifPresent(gelesenRepository::delete);
   }
 }

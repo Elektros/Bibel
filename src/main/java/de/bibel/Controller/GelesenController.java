@@ -3,7 +3,9 @@ package de.bibel.Controller;
 import de.bibel.application.Service.GelesenService;
 import de.bibel.application.model.Gelesen;
 import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,5 +31,10 @@ public class GelesenController {
   @GetMapping("/gelesen")
   public List<Gelesen> getGelesen() {
     return gelesenService.getGelesen();
+  }
+  
+  @DeleteMapping("/gelesen")
+  public void deleteMapping(@RequestParam UUID id) {
+    gelesenService.deleteGelesen(id);
   }
 }
