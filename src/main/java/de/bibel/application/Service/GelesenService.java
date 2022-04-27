@@ -47,8 +47,9 @@ public class GelesenService {
   public List<Gelesen> getGelesen(
       String bibelabschnitt,
       String kommentarAusschnitt,
-      String leser) {
-    return gelesenRepository.findGelesen(bibelabschnitt, kommentarAusschnitt, leser);
+      String leser,
+      String label) {
+    return gelesenRepository.findGelesensByLabelIn(bibelabschnitt, kommentarAusschnitt, leser, label);
   }
 
   public void deleteGelesen(UUID id) {

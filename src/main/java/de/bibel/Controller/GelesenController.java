@@ -32,8 +32,10 @@ public class GelesenController {
   public List<Gelesen> getGelesen(
       @RequestParam (required = false) String bibelabschnitt,
       @RequestParam (required = false) String kommentarAusschnitt,
-      @RequestParam (required = false) String leser) {
-    return gelesenService.getGelesen(bibelabschnitt, kommentarAusschnitt, leser);
+      @RequestParam (required = false) String leser,
+      @RequestParam (required = false) String label
+      ) {
+    return gelesenService.getGelesen(bibelabschnitt, kommentarAusschnitt, leser, label);
   }
   
   @DeleteMapping("/gelesen")
