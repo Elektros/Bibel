@@ -16,7 +16,8 @@ public interface GelesenRepository extends JpaRepository<Gelesen, UUID> {
           + " AND (:kommentarAusschnitt is null or gelesen.kommentar like concat('%',:kommentarAusschnitt,'%'))"
           + " AND (:leser is null or gelesen.leser = :leser)"
           + " AND (:label is null or :label member of gelesen.label)"
+          + " AND (:lieblingsvers is null or :lieblingsvers member of gelesen.lieblingsvers)"
   )
-  List<Gelesen> findGelesensByLabelIn(String bibelabschnitt, String kommentarAusschnitt, String leser, String label);
+  List<Gelesen> findGelesensByLabelInAndLieblingsversIn(String bibelabschnitt, String kommentarAusschnitt, String leser, String label, String lieblingsvers);
 }
 

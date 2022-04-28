@@ -33,9 +33,10 @@ public class GelesenController {
       @RequestParam (required = false) String bibelabschnitt,
       @RequestParam (required = false) String kommentarAusschnitt,
       @RequestParam (required = false) String leser,
-      @RequestParam (required = false) String label
+      @RequestParam (required = false) String label,
+      @RequestParam (required = false) String lieblingsvers
       ) {
-    return gelesenService.getGelesen(bibelabschnitt, kommentarAusschnitt, leser, label);
+    return gelesenService.getGelesen(bibelabschnitt, kommentarAusschnitt, leser, label, lieblingsvers);
   }
   
   @DeleteMapping("/gelesen")
