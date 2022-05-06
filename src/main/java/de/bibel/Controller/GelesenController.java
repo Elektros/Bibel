@@ -20,14 +20,14 @@ public class GelesenController {
   private final GelesenService gelesenService;
 
   @PostMapping("/gelesen")
-  public void saveGelesen(
+  public List<Gelesen> saveGelesen(
       @RequestParam String bibelabschnitt,
       @RequestParam List<String> lieblingsverse,
       @RequestParam List<String> versText,
       @RequestParam List<String> labels,
       @RequestParam String kommentar,
       @RequestParam String leser) {
-    gelesenService.saveGelesen(bibelabschnitt, lieblingsverse, versText, labels, leser, kommentar);
+    return gelesenService.saveGelesen(bibelabschnitt, lieblingsverse, versText, labels, leser, kommentar);
   }
 
   @GetMapping("/gelesen")
@@ -42,7 +42,7 @@ public class GelesenController {
   }
   
   @DeleteMapping("/gelesen")
-  public void deleteMapping(@RequestParam UUID id) {
-    gelesenService.deleteGelesen(id);
+  public List<Gelesen> deleteMapping(@RequestParam UUID id) {
+    return gelesenService.deleteGelesen(id);
   }
 }

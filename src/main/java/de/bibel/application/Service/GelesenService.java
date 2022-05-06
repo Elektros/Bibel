@@ -17,7 +17,7 @@ public class GelesenService {
 
   private final GelesenRepository gelesenRepository;
 
-  public void saveGelesen(
+  public List<Gelesen> saveGelesen(
       String bibelabschnitt,
       List<String> lieblingsverse,
       List<String> versTexte,
@@ -42,6 +42,7 @@ public class GelesenService {
             .build();
 
     gelesenRepository.save(gelesen);
+    return gelesenRepository.findAll();
   }
 
   public List<Gelesen> getGelesen(
@@ -53,8 +54,9 @@ public class GelesenService {
     return gelesenRepository.findGelesensByLabelInAndLieblingsversIn(bibelabschnitt, kommentarAusschnitt, leser, label, lieblingsvers);
   }
 
-  public void deleteGelesen(UUID id) {
+  public List<Gelesen> deleteGelesen(UUID id) {
     Optional<Gelesen> gelesen = gelesenRepository.findById(id);
     gelesen.ifPresent(gelesenRepository::delete);
+    return gelesenRepository.findAll();
   }
 }
