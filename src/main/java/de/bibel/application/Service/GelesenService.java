@@ -8,12 +8,15 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @RequiredArgsConstructor
 public class GelesenService {
+
+  private static final Logger LOGGER = LogManager.getLogger(GelesenService.class);
 
   private final GelesenRepository gelesenRepository;
 
@@ -24,7 +27,6 @@ public class GelesenService {
       List<String> labels,
       String leser,
       String kommentar) {
-
     Map<String, String> lieblingsVerseMitText = new HashMap<>();
     for (String vers : lieblingsverse) {
       for (String versText : versTexte) {
