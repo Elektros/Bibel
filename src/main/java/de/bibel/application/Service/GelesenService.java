@@ -2,6 +2,7 @@ package de.bibel.application.Service;
 
 import de.bibel.application.model.Gelesen;
 import de.bibel.application.model.GelesenRepository;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,17 +28,13 @@ public class GelesenService {
       List<String> labels,
       String leser,
       String kommentar) {
-    Map<String, String> lieblingsVerseMitText = new HashMap<>();
-    for (String vers : lieblingsverse) {
-      for (String versText : versTexte) {
-        lieblingsVerseMitText.put(vers, versText);
-      }
-    }
+    List<String> lieblingsVerseMitText = new ArrayList<>();
 
     Gelesen gelesen =
         Gelesen.builder()
             .text(bibelabschnitt)
-            .lieblingsvers(lieblingsVerseMitText)
+            .lieblingsvers(lieblingsverse)
+            .lieblingsversText(versTexte)
             .label(labels)
             .leser(leser)
             .kommentar(kommentar)
@@ -52,8 +49,16 @@ public class GelesenService {
       String kommentarAusschnitt,
       String leser,
       String label,
-      String lieblingsvers) {
-    return gelesenRepository.findGelesensByLabelInAndLieblingsversIn(bibelabschnitt, kommentarAusschnitt, leser, label, lieblingsvers);
+      String lieblingsvers,
+      String lieblingsversText) {
+    return gelesenRepository.findGelesensByLabelInAndLieblingsversIn(
+        bibelabschnitt,
+        kommentarAusschnitt,
+        leser,
+        label,
+        lieblingsvers,
+        lieblingsversText
+    );
   }
 
   public List<Gelesen> deleteGelesen(UUID id) {

@@ -37,7 +37,13 @@ public class Gelesen {
 
   @Column
   @ElementCollection
-  private Map<String, String> lieblingsvers;
+  @CollectionTable(name = "gelesen_lieblingsvers", joinColumns = @JoinColumn(name = "gelesen_id"))
+  private List<String> lieblingsvers;
+
+  @Column
+  @ElementCollection
+  @CollectionTable(name = "gelesen_lieblingsvers_text", joinColumns = @JoinColumn(name = "gelesen_id"))
+  private List<String> lieblingsversText;
 
   @Column
   @ElementCollection

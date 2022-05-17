@@ -41,9 +41,10 @@ public class GelesenController {
       @RequestParam (required = false) String kommentarAusschnitt,
       @RequestParam (required = false) String leser,
       @RequestParam (required = false) String label,
-      @RequestParam (required = false) String lieblingsvers
+      @RequestParam (required = false) String lieblingsvers,
+      @RequestParam (required = false) String lieblingsversText
       ) {
-    List<Gelesen> list = gelesenService.getGelesen(bibelabschnitt, kommentarAusschnitt, leser, label, lieblingsvers);
+    List<Gelesen> list = gelesenService.getGelesen(bibelabschnitt, kommentarAusschnitt, leser, label, lieblingsvers, lieblingsversText);
     return ResponseEntity.status(200).body(new GelesenResponseDTO(list, null));
   }
   
