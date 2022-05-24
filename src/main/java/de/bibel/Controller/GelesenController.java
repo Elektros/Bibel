@@ -5,13 +5,15 @@ import de.bibel.application.model.Gelesen;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,15 +26,10 @@ public class GelesenController {
 
   @PostMapping("/gelesen")
   public ResponseEntity<GelesenResponseDTO> saveGelesen(
-      @RequestParam String bibelabschnitt,
-      @RequestParam List<String> lieblingsverse,
-      @RequestParam List<String> versText,
-      @RequestParam List<String> labels,
-      @RequestParam String kommentar,
-      @RequestParam String leser) {
+      @RequestBody GelesenRequestDTO gelesenRequestDTO) {
     return ResponseEntity.status(200).body(new GelesenResponseDTO(
-        gelesenService.saveGelesen(bibelabschnitt, lieblingsverse, versText, labels, leser, kommentar),
-        "Added new entry for text " + bibelabschnitt));
+        gelesenService.saveGelesen(gelesenRequestDTO),
+        "Added new entry for text " + gelesenRequestDTO.bibelabschnitt));
   }
 
   @GetMapping("/gelesen")
@@ -49,7 +46,8 @@ public class GelesenController {
   }
   
   @DeleteMapping("/gelesen")
-  public ResponseEntity<GelesenResponseDTO> deleteMapping(@RequestParam UUID id) {
-    return ResponseEntity.status(200).body(new GelesenResponseDTO( gelesenService.deleteGelesen(id), "Deleted entry with id " + id));
+  public ResponseEntity<GelesenResponseDTO> deleteMapping(@RequestParam String id) {
+    return ResponseEntity.status(200)
+        .body(new GelesenResponseDTO( gelesenService.deleteGelesen(UUID.fromString(id)), "Deleted entry with id " + id));
   }
 }

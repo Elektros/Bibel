@@ -1,11 +1,9 @@
 package de.bibel.application.Service;
 
+import de.bibel.Controller.GelesenRequestDTO;
 import de.bibel.application.model.Gelesen;
 import de.bibel.application.model.GelesenRepository;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -21,23 +19,15 @@ public class GelesenService {
 
   private final GelesenRepository gelesenRepository;
 
-  public List<Gelesen> saveGelesen(
-      String bibelabschnitt,
-      List<String> lieblingsverse,
-      List<String> versTexte,
-      List<String> labels,
-      String leser,
-      String kommentar) {
-    List<String> lieblingsVerseMitText = new ArrayList<>();
-
+  public List<Gelesen> saveGelesen(GelesenRequestDTO gelesenRequestDTO) {
     Gelesen gelesen =
         Gelesen.builder()
-            .text(bibelabschnitt)
-            .lieblingsvers(lieblingsverse)
-            .lieblingsversText(versTexte)
-            .label(labels)
-            .leser(leser)
-            .kommentar(kommentar)
+            .text(gelesenRequestDTO.getBibelabschnitt())
+            .lieblingsvers(gelesenRequestDTO.getLieblingsverse())
+            .lieblingsversText(gelesenRequestDTO.getVersText())
+            .label(gelesenRequestDTO.getLabels())
+            .leser(gelesenRequestDTO.getLeser())
+            .kommentar(gelesenRequestDTO.getKommentar())
             .build();
 
     gelesenRepository.save(gelesen);
