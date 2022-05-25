@@ -621,3 +621,11 @@ insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (
 org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (297)"
 Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (297)"; SQL statement:
 insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 11:55:59 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun... (264)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun... (264)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 11:56:20 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun... (264)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun Ich spreche nun... (264)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]

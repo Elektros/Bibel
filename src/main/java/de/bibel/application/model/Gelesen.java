@@ -53,6 +53,6 @@ public class Gelesen {
   @Column(nullable = false)
   private String leser;
 
-  @Column
+  @Column(nullable = false)
   private String kommentar;
 }
