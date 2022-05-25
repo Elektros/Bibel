@@ -573,3 +573,51 @@ insert into gelesen (kommentar, leser, text, id) values (?, ?, ?, ?) [42102-200]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabelle "GELESEN_LIEBLINGSVERS_TEXT" nicht gefunden
 Table "GELESEN_LIEBLINGSVERS_TEXT" not found; SQL statement:
 insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [42102-200]
+2022-05-25 08:55:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTes... (708)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTes... (708)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 08:55:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTes... (708)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTes... (708)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 08:55:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTes... (708)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTes... (708)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 08:56:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTes tTestTestT estT estTest... (283)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTes tTestTestT estT estTest... (283)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 09:10:47 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (270)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (270)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 09:16:52 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 09:17:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 09:19:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 09:19:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 09:20:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 09:20:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (374)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
+2022-05-25 09:25:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wert zu gross / lang für Feld "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (297)"
+Value too long for column "LIEBLINGSVERS_TEXT VARCHAR(255)": "'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Te... (297)"; SQL statement:
+insert into gelesen_lieblingsvers_text (gelesen_id, lieblingsvers_text) values (?, ?) [22001-200]
