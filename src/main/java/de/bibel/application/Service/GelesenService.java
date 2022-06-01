@@ -3,13 +3,14 @@ package de.bibel.application.Service;
 import de.bibel.Controller.GelesenRequestDTO;
 import de.bibel.application.model.Gelesen;
 import de.bibel.application.model.GelesenRepository;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -31,6 +32,19 @@ public class GelesenService {
             .build();
 
     gelesenRepository.save(gelesen);
+    return gelesenRepository.findAll();
+  }
+
+  public List<Gelesen> updateGelesen(GelesenRequestDTO gelesenRequestDTO) {
+    List<Gelesen> BibelabschnittToUpdate = gelesenRepository.findGelesensByLabelInAndLieblingsversIn(
+            gelesenRequestDTO.getBibelabschnitt(), null,null,null,null, null);
+    BibelabschnittToUpdate.get(0).setLieblingsvers(gelesenRequestDTO.getLieblingsverse());
+    BibelabschnittToUpdate.get(0).setLieblingsversText(gelesenRequestDTO.getVersText());
+    BibelabschnittToUpdate.get(0).setLabel(gelesenRequestDTO.getLabels());
+    BibelabschnittToUpdate.get(0).setLeser(gelesenRequestDTO.getLeser());
+    BibelabschnittToUpdate.get(0).setKommentar(gelesenRequestDTO.getKommentar());
+
+    gelesenRepository.save(BibelabschnittToUpdate.get(0));
     return gelesenRepository.findAll();
   }
 

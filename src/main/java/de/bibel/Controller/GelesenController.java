@@ -2,20 +2,13 @@ package de.bibel.Controller;
 
 import de.bibel.application.Service.GelesenService;
 import de.bibel.application.model.Gelesen;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.UUID;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MissingServletRequestParameterException;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
@@ -30,6 +23,12 @@ public class GelesenController {
     return ResponseEntity.status(200).body(new GelesenResponseDTO(
         gelesenService.saveGelesen(gelesenRequestDTO),
         "Added new entry for text " + gelesenRequestDTO.bibelabschnitt));
+  }
+
+  @PostMapping("/gelesen/update")
+  public ResponseEntity<GelesenResponseDTO> updateGelesen(@RequestBody GelesenRequestDTO gelesenRequestDTO) {
+    return ResponseEntity.status(HttpStatus.OK).body(new GelesenResponseDTO(gelesenService.updateGelesen(gelesenRequestDTO),
+            "Updated entry for text " + gelesenRequestDTO.bibelabschnitt));
   }
 
   @GetMapping("/gelesen")
