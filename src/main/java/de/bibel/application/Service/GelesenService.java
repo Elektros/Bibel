@@ -1,15 +1,17 @@
 package de.bibel.application.Service;
 
-import de.bibel.Controller.GelesenRequestDTO;
+import de.bibel.Controller.dto.GelesenRequestDTO;
+import de.bibel.Controller.dto.UpdateRequestDto;
 import de.bibel.application.model.Gelesen;
 import de.bibel.application.model.GelesenRepository;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +34,21 @@ public class GelesenService {
 
     gelesenRepository.save(gelesen);
     return gelesenRepository.findAll();
+  }
+
+  public Gelesen updateGelesen(UpdateRequestDto updateRequestDto) {
+    Optional<Gelesen> entryToUpdate = gelesenRepository.findById(updateRequestDto.getId());
+    if (entryToUpdate.isPresent()) {
+      entryToUpdate.get().setLieblingsvers(updateRequestDto.getLieblingsverse());
+      entryToUpdate.get().setLieblingsversText(updateRequestDto.getVersText());
+      entryToUpdate.get().setLabel(updateRequestDto.getLabels());
+      entryToUpdate.get().setLeser(updateRequestDto.getLeser());
+      entryToUpdate.get().setKommentar(updateRequestDto.getKommentar());
+
+      gelesenRepository.save(entryToUpdate.get());
+      return entryToUpdate.get();
+    }
+    return null;
   }
 
   public List<Gelesen> getGelesen(
