@@ -1,5 +1,9 @@
 package de.bibel.Controller;
 
+import de.bibel.Controller.dto.GelesenRequestDTO;
+import de.bibel.Controller.dto.GelesenResponseDTO;
+import de.bibel.Controller.dto.UpdateRequestDto;
+import de.bibel.Controller.dto.UpdateResponseDto;
 import de.bibel.application.Service.GelesenService;
 import de.bibel.application.model.Gelesen;
 import lombok.RequiredArgsConstructor;
@@ -22,13 +26,13 @@ public class GelesenController {
       @RequestBody GelesenRequestDTO gelesenRequestDTO) {
     return ResponseEntity.status(200).body(new GelesenResponseDTO(
         gelesenService.saveGelesen(gelesenRequestDTO),
-        "Added new entry for text " + gelesenRequestDTO.bibelabschnitt));
+        "Added new entry for text " + gelesenRequestDTO.getBibelabschnitt()));
   }
 
   @PostMapping("/gelesen/update")
-  public ResponseEntity<GelesenResponseDTO> updateGelesen(@RequestBody GelesenRequestDTO gelesenRequestDTO) {
-    return ResponseEntity.status(HttpStatus.OK).body(new GelesenResponseDTO(gelesenService.updateGelesen(gelesenRequestDTO),
-            "Updated entry for text " + gelesenRequestDTO.bibelabschnitt));
+  public ResponseEntity<UpdateResponseDto> updateGelesen(@RequestBody UpdateRequestDto updateRequestDto) {
+    return ResponseEntity.status(HttpStatus.OK).body(new UpdateResponseDto(gelesenService.updateGelesen(updateRequestDto),
+            "Updated entry for text " + updateRequestDto.getBibelabschnitt()));
   }
 
   @GetMapping("/gelesen")

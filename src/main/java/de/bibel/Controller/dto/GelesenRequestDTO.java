@@ -1,8 +1,9 @@
-package de.bibel.Controller;
+package de.bibel.Controller.dto;
 
-import java.util.ArrayList;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
 
 @Getter
 @Setter

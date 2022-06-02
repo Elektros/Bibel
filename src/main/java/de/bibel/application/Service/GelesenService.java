@@ -1,6 +1,7 @@
 package de.bibel.application.Service;
 
-import de.bibel.Controller.GelesenRequestDTO;
+import de.bibel.Controller.dto.GelesenRequestDTO;
+import de.bibel.Controller.dto.UpdateRequestDto;
 import de.bibel.application.model.Gelesen;
 import de.bibel.application.model.GelesenRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,17 +36,19 @@ public class GelesenService {
     return gelesenRepository.findAll();
   }
 
-  public List<Gelesen> updateGelesen(GelesenRequestDTO gelesenRequestDTO) {
-    List<Gelesen> BibelabschnittToUpdate = gelesenRepository.findGelesensByLabelInAndLieblingsversIn(
-            gelesenRequestDTO.getBibelabschnitt(), null,null,null,null, null);
-    BibelabschnittToUpdate.get(0).setLieblingsvers(gelesenRequestDTO.getLieblingsverse());
-    BibelabschnittToUpdate.get(0).setLieblingsversText(gelesenRequestDTO.getVersText());
-    BibelabschnittToUpdate.get(0).setLabel(gelesenRequestDTO.getLabels());
-    BibelabschnittToUpdate.get(0).setLeser(gelesenRequestDTO.getLeser());
-    BibelabschnittToUpdate.get(0).setKommentar(gelesenRequestDTO.getKommentar());
+  public Optional<Gelesen> updateGelesen(UpdateRequestDto updateRequestDto) {
+    Optional<Gelesen> entryToUpdate = gelesenRepository.findById(updateRequestDto.getId());
+    if (entryToUpdate.isPresent()) {
+      entryToUpdate.get().setLieblingsvers(updateRequestDto.getLieblingsverse());
+      entryToUpdate.get().setLieblingsversText(updateRequestDto.getVersText());
+      entryToUpdate.get().setLabel(updateRequestDto.getLabels());
+      entryToUpdate.get().setLeser(updateRequestDto.getLeser());
+      entryToUpdate.get().setKommentar(updateRequestDto.getKommentar());
 
-    gelesenRepository.save(BibelabschnittToUpdate.get(0));
-    return gelesenRepository.findAll();
+      gelesenRepository.save(entryToUpdate.get());
+      return entryToUpdate;
+    }
+    return entryToUpdate;
   }
 
   public List<Gelesen> getGelesen(
