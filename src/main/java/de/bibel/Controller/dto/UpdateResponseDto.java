@@ -6,13 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Optional;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateResponseDto {
-    Optional<Gelesen> result;
+    Gelesen result;
     String returnMessage;
 }

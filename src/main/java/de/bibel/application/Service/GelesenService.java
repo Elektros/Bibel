@@ -36,7 +36,7 @@ public class GelesenService {
     return gelesenRepository.findAll();
   }
 
-  public Optional<Gelesen> updateGelesen(UpdateRequestDto updateRequestDto) {
+  public Gelesen updateGelesen(UpdateRequestDto updateRequestDto) {
     Optional<Gelesen> entryToUpdate = gelesenRepository.findById(updateRequestDto.getId());
     if (entryToUpdate.isPresent()) {
       entryToUpdate.get().setLieblingsvers(updateRequestDto.getLieblingsverse());
@@ -46,9 +46,9 @@ public class GelesenService {
       entryToUpdate.get().setKommentar(updateRequestDto.getKommentar());
 
       gelesenRepository.save(entryToUpdate.get());
-      return entryToUpdate;
+      return entryToUpdate.get();
     }
-    return entryToUpdate;
+    return null;
   }
 
   public List<Gelesen> getGelesen(
