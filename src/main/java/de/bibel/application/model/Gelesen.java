@@ -1,22 +1,11 @@
 package de.bibel.application.model;
 
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -33,22 +22,22 @@ public class Gelesen {
   private UUID id;
 
   @Column(nullable = false)
-  private String text;
+  private String bibelabschnitt;
 
   @Column
   @ElementCollection
   @CollectionTable(name = "gelesen_lieblingsvers", joinColumns = @JoinColumn(name = "gelesen_id"))
-  private List<String> lieblingsvers;
+  private List<String> lieblingsverse;
 
   @Column
   @ElementCollection
   @CollectionTable(name = "gelesen_lieblingsvers_text", joinColumns = @JoinColumn(name = "gelesen_id"))
-  private List<String> lieblingsversText;
+  private List<String> versText;
 
   @Column
   @ElementCollection
   @CollectionTable(name = "gelesen_label", joinColumns = @JoinColumn(name = "gelesen_id"))
-  private List<String> label;
+  private List<String> labels;
 
   @Column(nullable = false)
   private String leser;

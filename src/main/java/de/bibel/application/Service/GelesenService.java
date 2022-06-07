@@ -19,15 +19,15 @@ public class GelesenService {
 
   private static final Logger LOGGER = LogManager.getLogger(GelesenService.class);
 
-  private final GelesenRepository gelesenRepository;
+  protected final GelesenRepository gelesenRepository;
 
   public List<Gelesen> saveGelesen(GelesenRequestDTO gelesenRequestDTO) {
     Gelesen gelesen =
         Gelesen.builder()
-            .text(gelesenRequestDTO.getBibelabschnitt())
-            .lieblingsvers(gelesenRequestDTO.getLieblingsverse())
-            .lieblingsversText(gelesenRequestDTO.getVersText())
-            .label(gelesenRequestDTO.getLabels())
+            .bibelabschnitt(gelesenRequestDTO.getBibelabschnitt())
+            .lieblingsverse(gelesenRequestDTO.getLieblingsverse())
+            .versText(gelesenRequestDTO.getVersText())
+            .labels(gelesenRequestDTO.getLabels())
             .leser(gelesenRequestDTO.getLeser())
             .kommentar(gelesenRequestDTO.getKommentar())
             .build();
@@ -39,9 +39,9 @@ public class GelesenService {
   public Gelesen updateGelesen(UpdateRequestDto updateRequestDto) {
     Optional<Gelesen> entryToUpdate = gelesenRepository.findById(updateRequestDto.getId());
     if (entryToUpdate.isPresent()) {
-      entryToUpdate.get().setLieblingsvers(updateRequestDto.getLieblingsverse());
-      entryToUpdate.get().setLieblingsversText(updateRequestDto.getVersText());
-      entryToUpdate.get().setLabel(updateRequestDto.getLabels());
+      entryToUpdate.get().setLieblingsverse(updateRequestDto.getLieblingsverse());
+      entryToUpdate.get().setVersText(updateRequestDto.getVersText());
+      entryToUpdate.get().setLabels(updateRequestDto.getLabels());
       entryToUpdate.get().setLeser(updateRequestDto.getLeser());
       entryToUpdate.get().setKommentar(updateRequestDto.getKommentar());
 
