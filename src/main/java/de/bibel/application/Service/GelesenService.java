@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -36,8 +37,9 @@ public class GelesenService {
     return gelesenRepository.findAll();
   }
 
-  public Gelesen updateGelesen(UpdateRequestDto updateRequestDto) {
-    Optional<Gelesen> entryToUpdate = gelesenRepository.findById(updateRequestDto.getId());
+  public List<Gelesen> updateGelesen(UpdateRequestDto updateRequestDto) {
+    List<Gelesen> updateEntry = new ArrayList<>();
+    Optional<Gelesen> entryToUpdate = gelesenRepository.findById(UUID.fromString(updateRequestDto.getId()));
     if (entryToUpdate.isPresent()) {
       entryToUpdate.get().setLieblingsverse(updateRequestDto.getLieblingsverse());
       entryToUpdate.get().setVersText(updateRequestDto.getVersText());
@@ -46,7 +48,8 @@ public class GelesenService {
       entryToUpdate.get().setKommentar(updateRequestDto.getKommentar());
 
       gelesenRepository.save(entryToUpdate.get());
-      return entryToUpdate.get();
+      updateEntry.add(entryToUpdate.get());
+      return updateEntry;
     }
     return null;
   }
