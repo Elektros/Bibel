@@ -41,6 +41,7 @@ public class GelesenService {
     List<Gelesen> updateEntry = new ArrayList<>();
     Optional<Gelesen> entryToUpdate = gelesenRepository.findById(UUID.fromString(updateRequestDto.getId()));
     if (entryToUpdate.isPresent()) {
+      entryToUpdate.get().setBibelabschnitt(updateRequestDto.getBibelabschnitt());
       entryToUpdate.get().setLieblingsverse(updateRequestDto.getLieblingsverse());
       entryToUpdate.get().setVersText(updateRequestDto.getVersText());
       entryToUpdate.get().setLabels(updateRequestDto.getLabels());
