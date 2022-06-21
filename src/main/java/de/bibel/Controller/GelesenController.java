@@ -2,6 +2,7 @@ package de.bibel.Controller;
 
 import de.bibel.Controller.dto.GelesenRequestDTO;
 import de.bibel.Controller.dto.GelesenResponseDTO;
+import de.bibel.Controller.dto.GetListsResponseDto;
 import de.bibel.Controller.dto.UpdateRequestDto;
 import de.bibel.application.Service.GelesenService;
 import de.bibel.application.model.Gelesen;
@@ -51,5 +52,10 @@ public class GelesenController {
   public ResponseEntity<GelesenResponseDTO> deleteMapping(@RequestParam String id) {
     return ResponseEntity.status(200)
         .body(new GelesenResponseDTO( gelesenService.deleteGelesen(UUID.fromString(id)), "Deleted entry with id " + id));
+  }
+
+  @GetMapping("/gelesen/all")
+  public ResponseEntity<GetListsResponseDto> getAllGelesen() {
+    return ResponseEntity.status(200).body(gelesenService.getAllGelesen());
   }
 }

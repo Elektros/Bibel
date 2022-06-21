@@ -1,0 +1,18 @@
+package de.bibel.Controller.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class GetListsResponseDto {
+    List<String> labels;
+    List<String> bibelabschnitte;
+    List<String> lieblingsverse;
+}
