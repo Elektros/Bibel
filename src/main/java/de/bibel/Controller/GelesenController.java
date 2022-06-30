@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,14 +38,16 @@ public class GelesenController {
 
   @GetMapping("/gelesen")
   public ResponseEntity<GelesenResponseDTO> getGelesen(
-      @RequestParam (required = false) String bibelabschnitt,
-      @RequestParam (required = false) String kommentarAusschnitt,
-      @RequestParam (required = false) String leser,
-      @RequestParam (required = false) String label,
-      @RequestParam (required = false) String lieblingsvers,
-      @RequestParam (required = false) String lieblingsversText
-      ) {
-    List<Gelesen> list = gelesenService.getGelesen(bibelabschnitt, kommentarAusschnitt, leser, label, lieblingsvers, lieblingsversText);
+          @RequestParam (required = false) String bibelabschnitt,
+          @RequestParam (required = false) String kommentarAusschnitt,
+          @RequestParam (required = false) String leser,
+          @RequestParam (required = false) String label,
+          @RequestParam (required = false) String lieblingsvers,
+          @RequestParam (required = false) String lieblingsversText,
+          @RequestParam (required = false) LocalDateTime startDateTime,
+          @RequestParam (required = false) LocalDateTime endDateTime
+          ) {
+    List<Gelesen> list = gelesenService.getGelesen(bibelabschnitt, kommentarAusschnitt, leser, label, lieblingsvers, lieblingsversText, startDateTime, endDateTime);
     return ResponseEntity.status(200).body(new GelesenResponseDTO(list, null));
   }
   

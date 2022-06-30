@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,4 +45,8 @@ public class Gelesen {
 
   @Column(nullable = false)
   private String kommentar;
+
+  @Column(name = "timestamp", nullable = false)
+  private LocalDateTime timestamp;
+
 }

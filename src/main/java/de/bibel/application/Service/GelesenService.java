@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,7 @@ public class GelesenService {
                         .labels(gelesenRequestDTO.getLabels())
                         .leser(gelesenRequestDTO.getLeser())
                         .kommentar(gelesenRequestDTO.getKommentar())
+                        .timestamp(LocalDateTime.now())
                         .build();
 
         gelesenRepository.save(gelesen);
@@ -46,6 +48,7 @@ public class GelesenService {
             entryToUpdate.get().setLabels(updateRequestDto.getLabels());
             entryToUpdate.get().setLeser(updateRequestDto.getLeser());
             entryToUpdate.get().setKommentar(updateRequestDto.getKommentar());
+            entryToUpdate.get().setTimestamp(LocalDateTime.now());
 
             gelesenRepository.save(entryToUpdate.get());
             updateEntry.add(entryToUpdate.get());
@@ -60,14 +63,18 @@ public class GelesenService {
             String leser,
             String label,
             String lieblingsvers,
-            String lieblingsversText) {
-        return gelesenRepository.findGelesensByLabelInAndLieblingsversIn(
+            String lieblingsversText,
+            LocalDateTime startDateTime,
+            LocalDateTime endDateTime) {
+        return gelesenRepository.findGelesenByLabelInAndLieblingsversIn(
                 bibelabschnitt,
                 kommentarAusschnitt,
                 leser,
                 label,
                 lieblingsvers,
-                lieblingsversText
+                lieblingsversText,
+                startDateTime,
+                endDateTime
         );
     }
 

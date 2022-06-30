@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,7 +19,16 @@ public interface GelesenRepository extends JpaRepository<Gelesen, UUID> {
           + " AND (:label is null or :label member of gelesen.labels)"
           + " AND (:lieblingsvers is null or :lieblingsvers member of gelesen.lieblingsverse)"
           + " AND (:lieblingsversText is null or :lieblingsversText member of gelesen.versText)"
+          + " AND (:startDateTime is null or gelesen.timestamp > :startDateTime)"
+          + " AND (:endDateTime is null or gelesen.timestamp < :endDateTime)"
   )
-  List<Gelesen> findGelesensByLabelInAndLieblingsversIn(String bibelabschnitt, String kommentarAusschnitt, String leser, String label, String lieblingsvers, String lieblingsversText);
+  List<Gelesen> findGelesenByLabelInAndLieblingsversIn(String bibelabschnitt,
+                                                       String kommentarAusschnitt,
+                                                       String leser,
+                                                       String label,
+                                                       String lieblingsvers,
+                                                       String lieblingsversText,
+                                                       LocalDateTime startDateTime,
+                                                       LocalDateTime endDateTime);
 }
 
