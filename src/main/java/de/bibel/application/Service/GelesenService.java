@@ -49,7 +49,6 @@ public class GelesenService {
             entryToUpdate.get().setLabels(updateRequestDto.getLabels());
             entryToUpdate.get().setLeser(updateRequestDto.getLeser());
             entryToUpdate.get().setKommentar(updateRequestDto.getKommentar());
-            entryToUpdate.get().setTimestamp(entryToUpdate.get().getTimestamp());
             entryToUpdate.get().setUpdatedTimestamp(LocalDateTime.now());
 
             gelesenRepository.save(entryToUpdate.get());
