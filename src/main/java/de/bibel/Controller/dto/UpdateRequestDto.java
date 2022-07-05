@@ -3,6 +3,7 @@ package de.bibel.Controller.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Getter
@@ -15,4 +16,5 @@ public class UpdateRequestDto {
     ArrayList<String> labels;
     String kommentar;
     String leser;
+    LocalDateTime updatedTimestamp;
 }

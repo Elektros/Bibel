@@ -49,4 +49,7 @@ public class Gelesen {
   @Column(name = "timestamp", nullable = false)
   private LocalDateTime timestamp;
 
+  @Column(name = "updatedTimestamp")
+  private LocalDateTime updatedTimestamp;
+
 }
