@@ -2,6 +2,7 @@ package de.bibel.application.Service;
 
 import de.bibel.Controller.dto.GelesenRequestDTO;
 import de.bibel.Controller.dto.GetListsResponseDto;
+import de.bibel.Controller.dto.GetListsResultResponseDto;
 import de.bibel.Controller.dto.UpdateRequestDto;
 import de.bibel.application.model.Gelesen;
 import de.bibel.application.model.GelesenRepository;
@@ -79,9 +80,10 @@ public class GelesenService {
         );
     }
 
-    public GetListsResponseDto getAllGelesen() {
+    public GetListsResultResponseDto getAllGelesen() {
         List<Gelesen> allEntries = gelesenRepository.findAll();
-        GetListsResponseDto response = new GetListsResponseDto();
+        GetListsResultResponseDto response = new GetListsResultResponseDto();
+        GetListsResponseDto list = new GetListsResponseDto();
         List<String> labels = allEntries
                 .stream()
                 .map(Gelesen::getLabels)
@@ -103,9 +105,10 @@ public class GelesenService {
                 .flatMap(Collection::stream)
                 .distinct()
                 .collect(Collectors.toList());
-        response.setLabels(labels);
-        response.setBibelabschnitte(bibelabschnitte);
-        response.setLieblingsverse(lieblingsverse);
+        list.setLabels(labels);
+        list.setBibelabschnitte(bibelabschnitte);
+        list.setLieblingsverse(lieblingsverse);
+        response.setResult(list);
         return response;
     }
 

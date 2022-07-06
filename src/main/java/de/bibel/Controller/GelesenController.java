@@ -2,7 +2,7 @@ package de.bibel.Controller;
 
 import de.bibel.Controller.dto.GelesenRequestDTO;
 import de.bibel.Controller.dto.GelesenResponseDTO;
-import de.bibel.Controller.dto.GetListsResponseDto;
+import de.bibel.Controller.dto.GetListsResultResponseDto;
 import de.bibel.Controller.dto.UpdateRequestDto;
 import de.bibel.application.Service.GelesenService;
 import de.bibel.application.model.Gelesen;
@@ -58,7 +58,7 @@ public class GelesenController {
   }
 
   @GetMapping("/gelesen/all")
-  public ResponseEntity<GetListsResponseDto> getAllGelesen() {
+  public ResponseEntity<GetListsResultResponseDto> getAllGelesen() {
     return ResponseEntity.status(200).body(gelesenService.getAllGelesen());
   }
 }
